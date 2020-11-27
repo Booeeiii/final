@@ -1,3 +1,5 @@
+  
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -8,7 +10,6 @@
 </head>
 <body>
 <?php
-
 $conn = mysqli_init();
 mysqli_real_connect($conn, 'ihost.it.kmitl.ac.th', 'it63070218_it63070218', 'PPVvie84', 'it63070218_Yanisa', 3306);
 if (mysqli_connect_errno($conn))
@@ -16,26 +17,24 @@ if (mysqli_connect_errno($conn))
     die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 
+$ID = $_POST['ID'];
 
-$name = $_POST['name'];
 $height = $_POST['height'];
 $weight = $_POST['weight'];
 $bmi = $weight / (($height/100)**2);
 
-$sql = "INSERT INTO guestbook (name , height, weight, bmi) VALUES ('$name', '$height', '$weight', '$bmi')";
-
+$sql = "UPDATE guestbook SET weight='$weight', height='$height', bmi='$bmi' WHERE ID='$ID'";
 
 if (mysqli_query($conn, $sql)) {
-     echo '<div class="container mt-4">
-            <h3>successfully.</h3>
-            <a role="button" class="btn btn-outline-secondary" href="show (2).php">Next</a>
+    echo '<div class="container mt-4">
+            <h3>Updated successfully.</h3>
+            <a role="button" class="btn btn-outline-secondary" href="show (2).php">Back to Table</a>
          </div>';
-  } else {
+} else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-  }
-  
-mysqli_close($conn);
+}
 
+mysqli_close($conn);
 ?>
 </body>
-</htmll>
+</html>

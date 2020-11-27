@@ -20,9 +20,10 @@ $res = mysqli_query($conn, 'SELECT * FROM guestbook');
     <table class="table table-hover">
 	<thead class="thead-dark">
     <tr>
-        <th width="100"> <div>A</div></th>
-        <th width="100"> <div>B</div></th>
-        <th width="100"> <div>C</div></th>
+        <th width="100"> <div>name</div></th>
+        <th width="100"> <div>weight</div></th>
+        <th width="100"> <div>height</div></th>
+        <th width="100"> <div>bmi</div></th>
 	<th width="100"> <div>Action</div></th>
 
     </tr>
@@ -32,13 +33,14 @@ while($Result = mysqli_fetch_array($res))
 {
 ?>
   <tr>
-    <td><?php echo $Result['A'];?></div></td>
-    <td><?php echo $Result['B'];?></td>
-    <td><?php echo $Result['C'];?></td>
+    <td><?php echo $Result['name'];?></div></td>
+    <td><?php echo $Result['weight'];?></td>
+    <td><?php echo $Result['height'];?></td>
+    <td><?php echo $Result['bmi'];?></td>
     <td>
-	<form action="delete.php" method="post" class="d-inline">
+	<form action="edit.php" method="post" class="d-inline">
                 <input type="hidden" name="ID" value=<?php echo $Result['ID'];?>>
-                <button type="submit" class="btn btn-outline-danger">Del</button>
+                <button type="submit" class="btn btn-outline-primary">Edit</button>
         </form>
     </td>
    
